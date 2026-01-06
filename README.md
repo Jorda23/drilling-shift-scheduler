@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠️ Drilling Shift Scheduler
 
-## Getting Started
+Web application for **automatic scheduling of drilling supervisors**, enforcing strict daily coverage rules and operational constraints.
 
-First, run the development server:
+The system generates a **visual schedule** ensuring that **exactly two supervisors are drilling every day**, without violating business rules.
+
+---
+
+## 🚀 Live Demo
+
+🔗 **Deployed application:**  
+> _[Add Netlify or GitHub Pages URL here]_
+
+🔗 **GitHub repository:**  
+> _[Add GitHub repository URL here]_
+
+---
+
+## 📋 Business Rules Implemented
+
+✔ Always **exactly 2 supervisors drilling per day**  
+✔ Never 3 supervisors drilling at the same time  
+✔ Never only 1 supervisor drilling (once S3 is active)  
+✔ Supervisor **S1 always completes the full cycle**  
+✔ Supervisors **S2 and S3 dynamically adjust**  
+✔ Validation of invalid patterns (S-S, S-B, 1-day drilling, etc.)
+
+---
+
+## ⚙️ Schedule Configuration
+
+The user can dynamically configure:
+
+- **Work days (N)**
+- **Rest days (M)**
+- **Induction days** (1–5)
+- **Total drilling days** (30, 90, 950, etc.)
+
+The **Calculate Schedule** button:
+- Is disabled until all inputs are valid
+- Recalculates correctly when values change
+
+---
+
+## 📊 Visualization
+
+- Daily table per supervisor (S1, S2, S3)
+- States represented with colors:
+  - 🟦 Ascent (S)
+  - 🟧 Induction (I)
+  - 🟩 Drilling (P)
+  - 🟥 Descent (B)
+  - ⬜ Rest (D)
+- Additional `#P` row showing drilling supervisors per day
+- Invalid days visually highlighted
+
+---
+
+## 🚨 Validation & Status
+
+- Snackbar error feedback for invalid configurations
+- Schedule status indicator:
+  - ✅ **Valid**: all days have correct coverage
+  - ⚠️ **Needs review**: days with incorrect coverage detected
+
+---
+
+## 📤 Export Options
+
+The generated schedule can be exported as:
+
+- 📄 **PDF**
+- 📊 **Excel**
+- 📝 **Word**
+
+If no schedule exists, a non-intrusive warning is displayed.
+
+---
+
+## 🌗 Light / Dark Mode
+
+- Light / Dark theme toggle
+- Adaptive background:
+  - Light: `#f6f7f8`
+  - Dark: `#121212`
+- Modern UI with reusable gradient buttons and soft shadows
+
+---
+
+## 🧪 Mandatory Test Scenarios Covered
+
+✔ **14x7** schedule with 5 induction days  
+✔ **21x7** schedule with 3 induction days  
+✔ **10x5** schedule with 2 induction days  
+✔ **14x6** schedule with 4 induction days and 950 drilling days  
+
+---
+
+## 🧱 Tech Stack
+
+- **Next.js (App Router)**
+- **React**
+- **Material UI (MUI)**
+- **TypeScript**
+- **Jest + Testing Library**
+- **Yarn**
+
+---
+
+## 🏗️ Local Setup
 
 ```bash
-npm run dev
-# or
+# Clone repository
+git clone <repo-url>
+
+# Install dependencies
+yarn install
+
+# Run development server
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
