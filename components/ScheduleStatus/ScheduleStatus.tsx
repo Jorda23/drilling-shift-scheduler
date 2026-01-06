@@ -1,4 +1,6 @@
-import { Alert } from '@mui/material';
+import { Alert, Stack, Typography } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { Supervisor } from 'engine/types';
 
 export function ScheduleStatus({
@@ -17,17 +19,43 @@ export function ScheduleStatus({
 
   if (invalidDays === 0) {
     return (
-      <Alert severity="success">
-        El cronograma es válido. Todos los días tienen exactamente 2
-        supervisores perforando.
+      <Alert
+        severity="success"
+        variant="outlined"
+        icon={<CheckCircleIcon />}
+      >
+        <Stack spacing={0.5}>
+          <Typography fontWeight={600}>
+            Cronograma válido
+          </Typography>
+          <Typography variant="body2">
+            La cobertura diaria es correcta: todos los días cuentan con
+            exactamente <strong>2 supervisores perforando</strong>.
+          </Typography>
+        </Stack>
       </Alert>
     );
   }
 
   return (
-    <Alert severity="warning">
-      Estado del cronograma: Requiere revisión. Se detectaron{' '}
-      <strong>{invalidDays}</strong> días con cobertura incorrecta.
+    <Alert
+      severity="warning"
+      variant="outlined"
+      icon={<WarningAmberIcon />}
+    >
+      <Stack spacing={0.5}>
+        <Typography fontWeight={600}>
+          Cronograma con observaciones
+        </Typography>
+        <Typography variant="body2">
+          Se detectaron <strong>{invalidDays} días</strong> donde la
+          cobertura de perforación no cumple el estándar requerido
+          (2 supervisores).
+        </Typography>
+        <Typography variant="body2">
+          Revisa el esquema de turnos antes de aprobar el plan.
+        </Typography>
+      </Stack>
     </Alert>
   );
 }

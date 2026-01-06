@@ -1,5 +1,4 @@
-import { CssBaseline, Container } from "@mui/material";
-import { Navbar } from "components/Navbar";
+import { CssBaseline } from "@mui/material";
 import { ThemeRegistry } from "theme/ThemeRegistry";
 
 export const metadata = {
@@ -15,16 +14,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-                <ThemeRegistry>
+        <ThemeRegistry>
+          <CssBaseline />
 
-        <CssBaseline />
-        <Navbar />
-
-        <Container maxWidth="xl" sx={{ mt: 4 }}>
           {children}
-        </Container>
-                        </ThemeRegistry>
-
+        </ThemeRegistry>
       </body>
     </html>
   );
