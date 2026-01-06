@@ -1,8 +1,10 @@
-import { CssBaseline, Container } from '@mui/material';
+import { CssBaseline, Container } from "@mui/material";
+import { Navbar } from "components/Navbar";
+import { ThemeRegistry } from "theme/ThemeRegistry";
 
 export const metadata = {
-  title: 'Drilling Shift Scheduler',
-  description: 'Mining supervisor scheduling engine',
+  title: "Drilling Shift Scheduler",
+  description: "Mining supervisor scheduling engine",
 };
 
 export default function RootLayout({
@@ -13,10 +15,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+                <ThemeRegistry>
+
         <CssBaseline />
+        <Navbar />
+
         <Container maxWidth="xl" sx={{ mt: 4 }}>
           {children}
         </Container>
+                        </ThemeRegistry>
+
       </body>
     </html>
   );

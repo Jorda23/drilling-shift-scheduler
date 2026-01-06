@@ -1,6 +1,9 @@
 'use client';
+import { Container, Stack, Typography, Divider } from '@mui/material';
 
-import { AlertsPanel, ConfigForm, ScheduleTable } from 'components';
+import { ConfigForm, ScheduleTable } from 'components';
+import { ScheduleStatus } from 'components/ScheduleStatus';
+import { ScheduleSummary } from 'components/ScheduleSummary';
 import { generateSchedule } from 'engine/scheduler';
 import { Supervisor } from 'engine/types';
 import { JSX, useState } from 'react';
@@ -31,12 +34,29 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <>
-      <ConfigForm onCalculate={handleCalculate} />
-      <AlertsPanel errors={errors} />
-      {schedule.length > 0 && (
-        <ScheduleTable supervisors={schedule} />
-      )}
-    </>
+    <Container maxWidth="xl" sx={{ py: 4 }}>
+      <Stack spacing={3}>
+        <Stack spacing={0.5}>
+          <Typography variant="h4" fontWeight={700}>
+            Visualización de Cronograma
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Gestión de turnos de supervisores y validación de cobertura diaria.
+          </Typography>
+        </Stack>
+
+        <Divider />
+
+        <ConfigForm onCalculate={handleCalculate} />
+
+        {schedule.length > 0 && (
+          <>
+            <ScheduleSummary supervisors={schedule} />
+            <ScheduleTable supervisors={schedule} />
+            <ScheduleStatus supervisors={schedule} />
+          </>
+        )}
+      </Stack>
+    </Container>
   );
 }
