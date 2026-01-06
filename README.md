@@ -5,14 +5,9 @@ Web application for **automatic scheduling of drilling supervisors**, enforcing 
 The system generates a **visual schedule** ensuring that **exactly two supervisors are drilling every day**, without violating business rules.
 
 ---
-
 ## 🚀 Live Demo
 
-🔗 **Deployed application:**  
-> _[Add Netlify or GitHub Pages URL here]_
-
-🔗 **GitHub repository:**  
-> _[Add GitHub repository URL here]_
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://drilling-shift-scheduler.vercel.app)
 
 ---
 
